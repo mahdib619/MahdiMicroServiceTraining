@@ -1,5 +1,10 @@
+using University.Application;
+using University.Infrasturcture;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.RegistrarApplicationServices()
+                .RegistrarInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
