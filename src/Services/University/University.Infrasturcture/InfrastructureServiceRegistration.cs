@@ -14,6 +14,7 @@ public static class InfrastructureServiceRegistration
         services.AddDbContext<UniDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("UniDb")));
 
         services.AddScoped<ICoursesRepository, CoursesRepository>();
+        services.AddScoped<ITermsRepository, TermsRepository>();
 
         return services;
     }
