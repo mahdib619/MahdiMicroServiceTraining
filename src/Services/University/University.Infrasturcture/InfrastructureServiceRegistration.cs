@@ -16,6 +16,7 @@ public static class InfrastructureServiceRegistration
         services.AddScoped<ICoursesRepository, CoursesRepository>();
         services.AddScoped<ITermsRepository, TermsRepository>();
         services.AddScoped<IStudentsRepository, StudentsRepository>();
+        services.AddScoped<IStudentCoursesRepository, StudentCoursesRepository>();
 
         return services;
     }
