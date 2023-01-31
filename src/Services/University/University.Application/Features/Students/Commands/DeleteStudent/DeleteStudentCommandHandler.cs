@@ -1,0 +1,31 @@
+﻿using MediatR;
+using Microsoft.Extensions.Logging;
+using University.Application.Contracts.Persistence;
+using University.Application.Exception;
+using University.Domain.Entities;
+
+namespace University.Application.Features.Students.Commands.DeleteStudent;
+
+internal class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommand>
+{
+    private readonly ICoursesRepository _repository;
+    private readonly ILogger<DeleteStudentCommandHandler> _logger;
+
+    public DeleteStudentCommandHandler(ICoursesRepository repository, ILogger<DeleteStudentCommandHandler> logger)
+    {
+        _repository = repository;
+        _logger = logger;
+    }
+
+    public async Task<Unit> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
+    {
+        var deleted = await _repository.DeleteAsync(request.StudentId);
+
+        if (!deleted)
+            throw new NotFoundException(nameof(Student), request.StudentId);
+
+        _logger.LogInformation("Student {StudentId} is deleted successfully.", request.StudentId);
+
+        return Unit.Value;
+    }
+}
