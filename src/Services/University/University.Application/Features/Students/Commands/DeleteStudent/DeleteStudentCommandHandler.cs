@@ -8,10 +8,10 @@ namespace University.Application.Features.Students.Commands.DeleteStudent;
 
 internal class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommand>
 {
-    private readonly ICoursesRepository _repository;
+    private readonly IStudentsRepository _repository;
     private readonly ILogger<DeleteStudentCommandHandler> _logger;
 
-    public DeleteStudentCommandHandler(ICoursesRepository repository, ILogger<DeleteStudentCommandHandler> logger)
+    public DeleteStudentCommandHandler(IStudentsRepository repository, ILogger<DeleteStudentCommandHandler> logger)
     {
         _repository = repository;
         _logger = logger;
