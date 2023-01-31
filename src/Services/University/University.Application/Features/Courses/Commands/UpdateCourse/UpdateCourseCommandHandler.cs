@@ -22,12 +22,14 @@ internal class UpdateCourseCommandHandler : IRequestHandler<UpdateCourseCommand>
 
     public async Task<Unit> Handle(UpdateCourseCommand request, CancellationToken cancellationToken)
     {
-        var course = _mapper.Map<Course>(request);
+        var course = await _repository.GetByIdAsync(request.Id);
 
-        var updated = await _repository.UpdateAsync(course);
-
-        if (!updated)
+        if (course is null)
             throw new NotFoundException(nameof(Course), request.Id);
+
+        _mapper.Map(request, course);
+
+        await _repository.UpdateAsync(course);
 
         _logger.LogInformation("Course {CourseId} is updated successfully.", request.Id);
 

@@ -22,12 +22,14 @@ internal class UpdateTermCommandHandler : IRequestHandler<UpdateTermCommand>
 
     public async Task<Unit> Handle(UpdateTermCommand request, CancellationToken cancellationToken)
     {
-        var term = _mapper.Map<Term>(request);
+        var term = await _repository.GetByIdAsync(request.Id);
 
-        var updated = await _repository.UpdateAsync(term);
-
-        if (!updated)
+        if (term is null)
             throw new NotFoundException(nameof(Term), request.Id);
+
+        _mapper.Map(request, term);
+
+        await _repository.UpdateAsync(term);
 
         _logger.LogInformation("Term {TermId} is updated successfully.", request.Id);
 
