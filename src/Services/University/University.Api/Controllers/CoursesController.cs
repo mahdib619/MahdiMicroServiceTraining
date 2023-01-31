@@ -29,7 +29,7 @@ public class CoursesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<GetCourseDto>> GetAllCourses()
+    public async Task<ActionResult<List<GetCourseDto>>> GetAllCourses()
     {
         var request = new GetCoursesListQuery();
         var course = await _mediator.Send(request);
@@ -44,7 +44,7 @@ public class CoursesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<GetCourseDto>> UpdateCourse(int id, UpdateCourseCommand request)
+    public async Task<ActionResult> UpdateCourse(int id, UpdateCourseCommand request)
     {
         request.Id = id;
         await _mediator.Send(request);
@@ -52,7 +52,7 @@ public class CoursesController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<GetCourseDto>> DeleteCourse(int id)
+    public async Task<ActionResult> DeleteCourse(int id)
     {
         var request = new DeleteCourseCommand { CourseId = id };
         await _mediator.Send(request);

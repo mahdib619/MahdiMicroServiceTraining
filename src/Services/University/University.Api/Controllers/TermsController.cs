@@ -29,7 +29,7 @@ public class TermsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<GetTermDto>> GetAllTerms()
+    public async Task<ActionResult<List<GetTermDto>>> GetAllTerms()
     {
         var request = new GetTermsListQuery();
         var term = await _mediator.Send(request);
@@ -44,7 +44,7 @@ public class TermsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<GetTermDto>> UpdateTerm(int id, UpdateTermCommand request)
+    public async Task<ActionResult> UpdateTerm(int id, UpdateTermCommand request)
     {
         request.Id = id;
         await _mediator.Send(request);
@@ -52,7 +52,7 @@ public class TermsController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<GetTermDto>> DeleteTerm(int id)
+    public async Task<ActionResult> DeleteTerm(int id)
     {
         var request = new DeleteTermCommand { TermId = id };
         await _mediator.Send(request);
