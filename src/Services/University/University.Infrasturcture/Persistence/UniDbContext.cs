@@ -12,6 +12,7 @@ internal class UniDbContext : DbContext
 
     public DbSet<Course> Courses { get; set; }
     public DbSet<Term> Terms { get; set; }
+    public DbSet<Student> Students { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
