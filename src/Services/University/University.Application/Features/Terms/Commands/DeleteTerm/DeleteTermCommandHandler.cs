@@ -8,10 +8,10 @@ namespace University.Application.Features.Terms.Commands.DeleteTerm;
 
 internal class DeleteTermCommandHandler : IRequestHandler<DeleteTermCommand>
 {
-    private readonly ICoursesRepository _repository;
+    private readonly ITermsRepository _repository;
     private readonly ILogger<DeleteTermCommandHandler> _logger;
 
-    public DeleteTermCommandHandler(ICoursesRepository repository, ILogger<DeleteTermCommandHandler> logger)
+    public DeleteTermCommandHandler(ITermsRepository repository, ILogger<DeleteTermCommandHandler> logger)
     {
         _repository = repository;
         _logger = logger;
