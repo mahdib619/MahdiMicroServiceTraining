@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using University.Application.Contracts.Persistence;
-using University.Application.Dtos.Course;
 using University.Application.Dtos.Term;
 using University.Domain.Entities;
 
