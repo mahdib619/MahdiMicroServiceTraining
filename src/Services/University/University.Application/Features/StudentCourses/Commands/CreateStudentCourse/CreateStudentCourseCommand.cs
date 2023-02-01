@@ -5,7 +5,6 @@ namespace University.Application.Features.StudentCourses.Commands.CreateStudentC
 
 public class CreateStudentCourseCommand : IRequest<GetStudentCourseDto>
 {
-    public int Id { get; set; }
     public int StudentId { get; set; }
     public int CourseId { get; set; }
     public int TermId { get; set; }
