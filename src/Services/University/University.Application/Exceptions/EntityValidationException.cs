@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace University.Application.Exception;
+namespace University.Application.Exceptions;
 
 public class EntityValidationException : ApplicationException
 {

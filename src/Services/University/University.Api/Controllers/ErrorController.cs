@@ -2,7 +2,7 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using University.Application.Exception;
+using University.Application.Exceptions;
 
 namespace University.Api.Controllers;
 

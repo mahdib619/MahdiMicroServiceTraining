@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using University.Application.Exception;
+using University.Application.Exceptions;
 
 namespace University.Application.Behaviours;
 

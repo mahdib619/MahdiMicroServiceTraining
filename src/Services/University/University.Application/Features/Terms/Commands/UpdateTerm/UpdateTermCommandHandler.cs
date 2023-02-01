@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using University.Application.Contracts.Persistence;
-using University.Application.Exception;
+using University.Application.Exceptions;
 using University.Domain.Entities;
 
 namespace University.Application.Features.Terms.Commands.UpdateTerm;

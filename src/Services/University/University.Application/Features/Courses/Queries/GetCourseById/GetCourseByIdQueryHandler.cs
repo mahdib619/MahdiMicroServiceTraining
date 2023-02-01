@@ -2,7 +2,7 @@
 using MediatR;
 using University.Application.Contracts.Persistence;
 using University.Application.Dtos.Course;
-using University.Application.Exception;
+using University.Application.Exceptions;
 using University.Domain.Entities;
 
 namespace University.Application.Features.Courses.Queries.GetCourseById;

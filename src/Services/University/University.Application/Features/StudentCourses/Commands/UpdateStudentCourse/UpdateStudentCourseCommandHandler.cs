@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using University.Application.Contracts.Persistence;
-using University.Application.Exception;
+using University.Application.Exceptions;
 
 namespace University.Application.Features.StudentCourses.Commands.UpdateStudentCourse;
 
