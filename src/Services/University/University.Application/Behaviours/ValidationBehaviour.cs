@@ -1,8 +1,5 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using University.Application.Exceptions;
 
 namespace University.Application.Behaviours;
@@ -10,12 +7,10 @@ namespace University.Application.Behaviours;
 internal class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
-    private readonly ILogger<ValidationBehaviour<TRequest, TResponse>> _logger;
 
-    public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators, ILogger<ValidationBehaviour<TRequest, TResponse>> logger)
+    public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators)
     {
         _validators = validators;
-        _logger = logger;
     }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
