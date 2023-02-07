@@ -26,5 +26,9 @@ internal class StudentConfiguration : IEntityTypeConfiguration<Student>
         builder.HasOne(s => s.SignUpTerm)
                .WithMany()
                .OnDelete(DeleteBehavior.NoAction);
+
+        builder.HasOne(s => s.Major)
+               .WithMany()
+               .OnDelete(DeleteBehavior.NoAction);
     }
 }
