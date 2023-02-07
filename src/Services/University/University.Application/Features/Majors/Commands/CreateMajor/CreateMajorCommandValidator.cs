@@ -8,5 +8,7 @@ internal class CreateMajorCommandValidator : AbstractValidator<CreateMajorComman
     {
         RuleFor(cc => cc.Name).NotEmpty()
                               .MaximumLength(200);
+
+        RuleFor(cc => cc.Code).Length(7);
     }
 }
