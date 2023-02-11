@@ -40,6 +40,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralHelpers", "BuildingB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatRHelpers", "BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj", "{7E3B569B-2208-42A9-A818-C4315D652E58}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetHelpers", "BuildingBlocks\AspNetHelpers\AspNetHelpers.csproj", "{E826960C-C79E-4784-BC24-D46CEFF06273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +96,10 @@ Global
 		{7E3B569B-2208-42A9-A818-C4315D652E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E3B569B-2208-42A9-A818-C4315D652E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E3B569B-2208-42A9-A818-C4315D652E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E826960C-C79E-4784-BC24-D46CEFF06273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E826960C-C79E-4784-BC24-D46CEFF06273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E826960C-C79E-4784-BC24-D46CEFF06273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E826960C-C79E-4784-BC24-D46CEFF06273}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{01121491-7E33-4380-A368-AAB103588685} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 		{BEA41749-FDE3-455D-AF4B-E794233D1B25} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 		{7E3B569B-2208-42A9-A818-C4315D652E58} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
+		{E826960C-C79E-4784-BC24-D46CEFF06273} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6869ED7F-5651-40AF-BF15-AC057B3E7313}

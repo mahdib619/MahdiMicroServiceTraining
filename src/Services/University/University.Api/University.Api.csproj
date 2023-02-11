@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Program.cs~RFaba4c7d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\AspNetHelpers\AspNetHelpers.csproj" />
     <ProjectReference Include="..\University.Application\University.Application.csproj" />
     <ProjectReference Include="..\University.Domain\University.Domain.csproj" />
     <ProjectReference Include="..\University.Infrasturcture\University.Infrasturcture.csproj" />

@@ -1,5 +1,7 @@
+using AspNetHelpers.Extensions;
 using Financial.Application;
 using Financial.Infrastructure;
+using ApplicationBuilderExtensions = AspNetHelpers.Extensions.ApplicationBuilderExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseCommonExceptionHandler();
 
 app.UseHttpsRedirection();
 

@@ -1,3 +1,4 @@
+using AspNetHelpers.Extensions;
 using Serilog;
 using University.Application;
 using University.Infrasturcture;
@@ -23,7 +24,7 @@ Log.Logger = new LoggerConfiguration()
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseExceptionHandler("/error");
+app.UseCommonExceptionHandler();
 
 app.UseHttpsRedirection();
 
