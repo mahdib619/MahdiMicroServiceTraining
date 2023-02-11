@@ -8,15 +8,19 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+      <Folder Include="Controllers\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Financial.Application\Financial.Application.csproj" />
+    <ItemGroup>
+      <ProjectReference Include="..\Financial.Application\Financial.Application.csproj" />
     <ProjectReference Include="..\Financial.Domain\Financial.Domain.csproj" />
     <ProjectReference Include="..\Financial.Infrastructure\Financial.Infrastructure.csproj" />
   </ItemGroup>
