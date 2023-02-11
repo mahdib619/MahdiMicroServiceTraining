@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
+using GeneralHelpers.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using University.Application.Exceptions;
 
 namespace University.Api.Controllers;
 

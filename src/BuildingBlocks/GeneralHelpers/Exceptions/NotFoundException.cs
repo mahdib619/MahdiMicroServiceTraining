@@ -1,4 +1,4 @@
-﻿namespace Financial.Application.Exceptions;
+﻿namespace GeneralHelpers.Exceptions;
 
 public class NotFoundException : ApplicationException
 {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using GeneralHelpers.Exceptions;
 using MediatR;
 using University.Application.Contracts.Persistence;
 using University.Application.Dtos.Term;
-using University.Application.Exceptions;
 using University.Domain.Entities;
 
 namespace University.Application.Features.Terms.Queries.GetTermById;

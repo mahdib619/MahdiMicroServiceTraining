@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using GeneralHelpers.Exceptions;
+using MediatR;
 using Microsoft.Extensions.Logging;
-using University.Application.Exceptions;
 
 namespace University.Application.Behaviours;
 

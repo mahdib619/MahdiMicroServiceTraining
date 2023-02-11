@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Financial.Application.Contracts.Persistence;
 using Financial.Application.Dtos.CourseFee;
-using Financial.Application.Exceptions;
 using Financial.Domain.Entities;
+using GeneralHelpers.Exceptions;
 using MediatR;
 
 namespace Financial.Application.Features.CourseFees.Queries.GetCourseFeeByCourseId;

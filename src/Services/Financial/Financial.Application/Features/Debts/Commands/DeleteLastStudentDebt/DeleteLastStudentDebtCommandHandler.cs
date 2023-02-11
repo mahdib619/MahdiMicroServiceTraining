@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Financial.Application.Contracts.Persistence;
-using Financial.Application.Exceptions;
 using Financial.Domain.Entities;
+using GeneralHelpers.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

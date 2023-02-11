@@ -1,4 +1,4 @@
-﻿using Financial.Application.Exceptions;
+﻿using GeneralHelpers.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

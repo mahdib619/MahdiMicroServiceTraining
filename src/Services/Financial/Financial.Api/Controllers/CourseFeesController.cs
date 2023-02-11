@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Financial.Application.Dtos.CourseFee;
+﻿using Financial.Application.Dtos.CourseFee;
 using Financial.Application.Features.CourseFees.Command.AddOrUpdateCourseFee;
 using Financial.Application.Features.CourseFees.Queries.GetCourseFeeByCourseId;
 using Financial.Application.Features.CourseFees.Queries.GetCourseFeesList;

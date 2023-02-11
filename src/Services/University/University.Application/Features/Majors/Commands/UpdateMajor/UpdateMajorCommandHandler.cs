@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
+using GeneralHelpers.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using University.Application.Contracts.Persistence;
-using University.Application.Exceptions;
-using University.Domain.Entities;
 
 namespace University.Application.Features.Majors.Commands.UpdateMajor;
 
@@ -22,14 +21,14 @@ internal class UpdateMajorCommandHandler : IRequestHandler<UpdateMajorCommand>
 
     public async Task<Unit> Handle(UpdateMajorCommand request, CancellationToken cancellationToken)
     {
-        var Major = await _repository.GetByIdAsync(request.Id);
+        var major = await _repository.GetByIdAsync(request.Id);
 
-        if (Major is null)
-            throw new NotFoundException(nameof(Major), request.Id);
+        if (major is null)
+            throw new NotFoundException(nameof(major), request.Id);
 
-        _mapper.Map(request, Major);
+        _mapper.Map(request, major);
 
-        await _repository.UpdateAsync(Major);
+        await _repository.UpdateAsync(major);
 
         _logger.LogInformation("Major {MajorId} is updated successfully.", request.Id);
 

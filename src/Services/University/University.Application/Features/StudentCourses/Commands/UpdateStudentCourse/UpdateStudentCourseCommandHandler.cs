@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using GeneralHelpers.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using University.Application.Contracts.Persistence;
-using University.Application.Exceptions;
 
 namespace University.Application.Features.StudentCourses.Commands.UpdateStudentCourse;
 

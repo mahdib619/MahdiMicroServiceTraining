@@ -1,6 +1,6 @@
-﻿using Financial.Application.Exceptions;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
+using ValidationHelpers.Extensions;
 
 namespace Financial.Application.Behaviours;
 
@@ -22,8 +22,7 @@ internal class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReq
             var validaitonResults = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));
             var failures = validaitonResults.SelectMany(vr => vr.Errors).Where(f => f is not null).ToList();
 
-            if (failures.Any())
-                throw new EntityValidationException(failures);
+            failures.ThrowEntityValidationExceptionIfNotEmpty();
         }
 
         return await next();

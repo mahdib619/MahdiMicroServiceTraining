@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using GeneralHelpers.Exceptions;
 using MediatR;
 using University.Application.Contracts.Persistence;
 using University.Application.Dtos.StudentCourse;
-using University.Application.Exceptions;
 
 namespace University.Application.Features.StudentCourses.Queries.GetStudentCourseById;
 
