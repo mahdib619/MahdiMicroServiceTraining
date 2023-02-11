@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\GeneralHelpers\GeneralHelpers.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\ValidationHelpers\ValidationHelpers.csproj" />
     <ProjectReference Include="..\University.Domain\University.Domain.csproj" />
   </ItemGroup>

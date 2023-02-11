@@ -2,9 +2,9 @@
 using MediatR;
 using ValidationHelpers.Extensions;
 
-namespace University.Application.Behaviours;
+namespace MediatRHelpers.CommonBehaviours;
 
-internal class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 

@@ -2,11 +2,10 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace University.Application.Behaviours;
+namespace MediatRHelpers.CommonBehaviours;
 
-internal class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
-    private readonly HashSet<string> _clientExceptionsTypeNames = new() { typeof(EntityValidationException).FullName, typeof(NotFoundException).FullName };
     private readonly ILogger<UnhandledExceptionBehaviour<TRequest, TResponse>> _logger;
 
     public UnhandledExceptionBehaviour(ILogger<UnhandledExceptionBehaviour<TRequest, TResponse>> logger)
@@ -20,7 +19,7 @@ internal class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehav
         {
             return await next();
         }
-        catch (Exception ex) when (!IsClientError(ex))
+        catch (Exception ex) when (ex is not ClientException)
         {
             var requestName = typeof(TRequest).Name;
             _logger.LogError(ex, "Application Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
@@ -28,5 +27,4 @@ internal class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehav
         }
     }
 
-    private bool IsClientError(Exception ex) => _clientExceptionsTypeNames.Contains(ex.GetType().FullName);
 }

@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
+using MediatRHelpers.Extensions;
 using Microsoft.Extensions.DependencyInjection;
-using University.Application.Behaviours;
+using System.Reflection;
 
 namespace University.Application;
 
@@ -14,8 +14,8 @@ public static class ApplicationServiceRegistration
         services.AddMediatR(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), ServiceLifetime.Scoped, null, true);
 
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        services.AddUnhandledExceptionBehaviour();
+        services.AddValidationBehaviour();
 
         return services;
     }
