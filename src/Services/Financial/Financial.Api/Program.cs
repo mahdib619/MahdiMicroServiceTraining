@@ -1,7 +1,6 @@
 using AspNetHelpers.Extensions;
 using Financial.Application;
 using Financial.Infrastructure;
-using ApplicationBuilderExtensions = AspNetHelpers.Extensions.ApplicationBuilderExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

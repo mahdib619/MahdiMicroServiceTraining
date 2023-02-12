@@ -1,6 +1,6 @@
 ﻿namespace GeneralHelpers.Exceptions;
 
-public class NotFoundException : ApplicationException
+public class NotFoundException : ClientException
 {
     public NotFoundException(string message) : base(message)
     {
