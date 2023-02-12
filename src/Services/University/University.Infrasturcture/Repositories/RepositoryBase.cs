@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using DomainHelpers.Common;
 using University.Application.Contracts.Persistence;
-using University.Domain.Common;
 using University.Infrasturcture.Persistence;
 
 namespace University.Infrasturcture.Repositories;

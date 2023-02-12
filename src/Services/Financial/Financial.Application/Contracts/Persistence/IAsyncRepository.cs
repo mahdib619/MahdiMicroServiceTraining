@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using Financial.Domain.Common;
+using DomainHelpers.Common;
 
 namespace Financial.Application.Contracts.Persistence;
 

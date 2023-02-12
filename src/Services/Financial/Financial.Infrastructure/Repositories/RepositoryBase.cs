@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
+using DomainHelpers.Common;
 using Financial.Application.Contracts.Persistence;
-using Financial.Domain.Common;
 using Financial.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 

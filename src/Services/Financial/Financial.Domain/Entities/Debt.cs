@@ -1,4 +1,4 @@
-﻿using Financial.Domain.Common;
+﻿using DomainHelpers.Common;
 using Financial.Domain.Enums;
 
 namespace Financial.Domain.Entities;

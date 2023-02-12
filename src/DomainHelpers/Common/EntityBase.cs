@@ -1,4 +1,4 @@
-﻿namespace Financial.Domain.Common;
+﻿namespace DomainHelpers.Common;
 
 public abstract class EntityBase
 {

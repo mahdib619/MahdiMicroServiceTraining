@@ -1,4 +1,4 @@
-﻿using University.Domain.Common;
+﻿using DomainHelpers.Common;
 
 namespace University.Domain.Entities;
 

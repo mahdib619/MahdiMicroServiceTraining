@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using University.Domain.Common;
+using DomainHelpers.Common;
 
 namespace University.Application.Contracts.Persistence;
 
