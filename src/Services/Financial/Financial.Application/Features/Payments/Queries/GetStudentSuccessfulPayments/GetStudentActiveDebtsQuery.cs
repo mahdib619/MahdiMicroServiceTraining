@@ -1,9 +1,9 @@
-﻿using Financial.Application.Dtos.Debt;
+﻿using Financial.Application.Dtos.Payment;
 using MediatR;
 
 namespace Financial.Application.Features.Payments.Queries.GetStudentSuccessfulPayments;
 
-public class GetStudentSuccessFulPaymentsQuery : IRequest<List<GetDebtDto>>
+public class GetStudentSuccessFulPaymentsQuery : IRequest<List<GetPaymentDto>>
 {
     public GetStudentSuccessFulPaymentsQuery(string studentNumber, DateTime? startDate = null, DateTime? endDate = null)
     {
