@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DomainHelpers\DomainHelpers.csproj" />
+    <Folder Include="Common\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DomainHelpers\DomainHelpers.csproj" />
   </ItemGroup>
 
 </Project>

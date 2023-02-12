@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DomainHelpers\DomainHelpers.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\DomainHelpers\DomainHelpers.csproj" />
   </ItemGroup>
 
 </Project>
