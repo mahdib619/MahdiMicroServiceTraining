@@ -1,4 +1,5 @@
-﻿using University.Domain.Entities;
+﻿using DataAccessHelper.Abstraction.Repositories;
+using University.Domain.Entities;
 
 namespace University.Application.Contracts.Persistence;
 

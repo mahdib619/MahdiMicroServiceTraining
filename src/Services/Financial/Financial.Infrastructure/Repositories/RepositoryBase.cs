@@ -1,8 +1,8 @@
-﻿using System.Linq.Expressions;
+﻿using DataAccessHelper.Abstraction.Repositories;
 using DomainHelpers.Common;
-using Financial.Application.Contracts.Persistence;
 using Financial.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Financial.Infrastructure.Repositories;
 

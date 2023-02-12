@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using DomainHelpers.Common;
 
-namespace University.Application.Contracts.Persistence;
+namespace DataAccessHelper.Abstraction.Repositories;
 
 public interface IAsyncRepository<TEntity> where TEntity : EntityBase
 {

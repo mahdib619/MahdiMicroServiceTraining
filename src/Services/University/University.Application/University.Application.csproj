@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\DataAccessHelper.Abstraction\DataAccessHelper.Abstraction.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\GeneralHelpers\GeneralHelpers.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\ValidationHelpers\ValidationHelpers.csproj" />

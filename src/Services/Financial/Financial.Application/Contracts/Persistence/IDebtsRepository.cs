@@ -1,5 +1,6 @@
 ﻿using Financial.Domain.Entities;
 using System.Linq.Expressions;
+using DataAccessHelper.Abstraction.Repositories;
 
 namespace Financial.Application.Contracts.Persistence;
 
