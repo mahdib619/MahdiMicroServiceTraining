@@ -1,4 +1,5 @@
 using Financial.Application;
+using Financial.Grpc.GrpcServices;
 using Financial.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,5 +10,7 @@ builder.Services.RegistrarApplicationServices()
 builder.Services.AddGrpc();
 
 var app = builder.Build();
+
+app.MapGrpcService<GrpcBalanceService>();
 
 app.Run();

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "Financial.Grpc";
+
+service GrpcBalance {
+	rpc GetStudentBalanceInfo (GetStudentBalanceInfoReq) returns (GetStudentBalanceInfoRes);
+}
+
+message GetStudentBalanceInfoRes{
+	string studentNumber = 1;
+	bool isDebtor = 2;
+}
+
+message GetStudentBalanceInfoReq{
+	string studentNumber = 1;
+	int64 startDate = 2;
+	int64 endDate = 3;
+}

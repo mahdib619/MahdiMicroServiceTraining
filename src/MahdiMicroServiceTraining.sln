@@ -34,11 +34,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Financial.Grpc", "Services\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationHelpers", "BuildingBlocks\ValidationHelpers\ValidationHelpers.csproj", "{01121491-7E33-4380-A368-AAB103588685}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationHelpers", "BuildingBlocks\ValidationHelpers\ValidationHelpers.csproj", "{01121491-7E33-4380-A368-AAB103588685}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralHelpers", "BuildingBlocks\GeneralHelpers\GeneralHelpers.csproj", "{BEA41749-FDE3-455D-AF4B-E794233D1B25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatRHelpers", "BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj", "{7E3B569B-2208-42A9-A818-C4315D652E58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatRHelpers", "BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj", "{7E3B569B-2208-42A9-A818-C4315D652E58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetHelpers", "BuildingBlocks\AspNetHelpers\AspNetHelpers.csproj", "{E826960C-C79E-4784-BC24-D46CEFF06273}"
 EndProject
