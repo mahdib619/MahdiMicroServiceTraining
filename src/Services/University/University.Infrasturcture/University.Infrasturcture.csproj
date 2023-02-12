@@ -7,13 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SyncDataServices\Grpc\Protos\balances.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\University.Application\University.Application.csproj" />
     <ProjectReference Include="..\University.Domain\University.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="SyncDataServices\Grpc\Protos\balances.proto" Access="Internal" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>
