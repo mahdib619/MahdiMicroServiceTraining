@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\DataAccessHelper.EntityFramework\DataAccessHelper.EntityFramework.csproj" />
     <ProjectReference Include="..\Financial.Application\Financial.Application.csproj" />
     <ProjectReference Include="..\Financial.Domain\Financial.Domain.csproj" />
   </ItemGroup>

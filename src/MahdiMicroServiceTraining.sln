@@ -46,6 +46,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessHelper.Abstractio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainHelpers", "BuildingBlocks\DomainHelpers\DomainHelpers.csproj", "{E4F8680E-A959-4E97-8B5F-107B75E83278}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessHelper.EntityFramework", "BuildingBlocks\DataAccessHelper.EntityFramework\DataAccessHelper.EntityFramework.csproj", "{6E94A444-6259-43A9-9099-ABA20C9ABA3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +114,10 @@ Global
 		{E4F8680E-A959-4E97-8B5F-107B75E83278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4F8680E-A959-4E97-8B5F-107B75E83278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4F8680E-A959-4E97-8B5F-107B75E83278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +140,7 @@ Global
 		{E826960C-C79E-4784-BC24-D46CEFF06273} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 		{EB595EDC-EAF8-40DE-BFD9-83E36878BFD2} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 		{E4F8680E-A959-4E97-8B5F-107B75E83278} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
+		{6E94A444-6259-43A9-9099-ABA20C9ABA3C} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6869ED7F-5651-40AF-BF15-AC057B3E7313}
