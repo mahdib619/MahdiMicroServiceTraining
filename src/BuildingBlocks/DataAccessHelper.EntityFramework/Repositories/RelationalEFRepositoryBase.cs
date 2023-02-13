@@ -16,6 +16,16 @@ public class RelationalEFRepositoryBase<TContext, TEntity> : IAsyncRepository<TE
         _entities = DbContext.Set<TEntity>();
     }
 
+    public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate = null)
+    {
+        var query = _entities.AsNoTracking();
+
+        if (predicate is not null)
+            query = query.Where(predicate);
+
+        return await query.AnyAsync();
+    }
+
     public async Task<IReadOnlyList<TEntity>> GetAllAsync()
     {
         return await _entities.AsNoTracking()

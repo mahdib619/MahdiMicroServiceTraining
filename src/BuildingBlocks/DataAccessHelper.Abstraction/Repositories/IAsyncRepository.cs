@@ -5,6 +5,7 @@ namespace DataAccessHelper.Abstraction.Repositories;
 
 public interface IAsyncRepository<TEntity> where TEntity : EntityBase
 {
+    Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate = null);
     Task<IReadOnlyList<TEntity>> GetAllAsync();
     Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
     Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate = null,
