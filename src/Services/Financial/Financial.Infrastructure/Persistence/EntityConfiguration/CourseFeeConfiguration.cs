@@ -11,7 +11,10 @@ internal class CourseFeeConfiguration : IEntityTypeConfiguration<CourseFee>
         builder.HasKey(e => e.CourseId);
 
         builder.Property(e => e.CourseId).ValueGeneratedNever();
-        builder.Property(e => e.Id).UseIdentityColumn();
+
+        builder.Property(e => e.Id).UseIdentityColumn()
+                                   .ValueGeneratedOnAddOrUpdate();
+
         builder.Property(e => e.Fee).HasPrecision(18, 0);
     }
 }

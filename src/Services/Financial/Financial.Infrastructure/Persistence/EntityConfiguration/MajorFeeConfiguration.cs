@@ -10,7 +10,9 @@ internal class MajorFeeConfiguration : IEntityTypeConfiguration<MajorFee>
     {
         builder.HasKey(e => e.MajorCode);
 
-        builder.Property(e => e.Id).UseIdentityColumn();
+        builder.Property(e => e.Id).UseIdentityColumn()
+                                   .ValueGeneratedOnAddOrUpdate();
+
         builder.Property(e => e.Fee).HasPrecision(18, 0);
     }
 }
