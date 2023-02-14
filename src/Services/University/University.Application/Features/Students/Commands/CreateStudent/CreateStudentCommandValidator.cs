@@ -8,6 +8,8 @@ internal class CreateStudentCommandValidator : AbstractValidator<CreateStudentCo
     {
         RuleFor(s => s.SignUpTermId).GreaterThan(0);
 
+        RuleFor(s => s.MajorId).GreaterThan(0);
+
         RuleFor(s => s.StudentNumber).NotEmpty()
                                      .Length(15);
 
