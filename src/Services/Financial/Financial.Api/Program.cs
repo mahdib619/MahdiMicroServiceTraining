@@ -1,11 +1,31 @@
 using AspNetHelpers.Extensions;
+using EventBus.Messages.Common;
+using Financial.Api.EventBusConsumers;
 using Financial.Application;
 using Financial.Infrastructure;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegistrarApplicationServices()
                 .RegistrarInfrastructureServices(builder.Configuration);
+
+builder.Services.AddMassTransit(config =>
+{
+    config.AddConsumer<StudentPickedCourseConsumer>();
+
+    config.UsingRabbitMq((mqCtx, mqCfg) =>
+    {
+        mqCfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+
+        mqCfg.ReceiveEndpoint(EventBusConstants.PICK_COURSE_QUEUE, epCfg =>
+        {
+            epCfg.ConfigureConsumer<StudentPickedCourseConsumer>(mqCtx);
+        });
+    });
+});
+
+builder.Services.AddScoped<StudentPickedCourseConsumer>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
