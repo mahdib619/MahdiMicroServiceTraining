@@ -13,6 +13,7 @@ builder.Services.RegistrarApplicationServices()
 builder.Services.AddMassTransit(config =>
 {
     config.AddConsumer<StudentPickedCourseConsumer>();
+    config.AddConsumer<StudentDeletedCourseConsumer>();
 
     config.UsingRabbitMq((mqCtx, mqCfg) =>
     {
@@ -21,6 +22,10 @@ builder.Services.AddMassTransit(config =>
         mqCfg.ReceiveEndpoint(EventBusConstants.PICK_COURSE_QUEUE, epCfg =>
         {
             epCfg.ConfigureConsumer<StudentPickedCourseConsumer>(mqCtx);
+        });
+        mqCfg.ReceiveEndpoint(EventBusConstants.DELETE_COURSE_QUEUE, epCfg =>
+        {
+            epCfg.ConfigureConsumer<StudentDeletedCourseConsumer>(mqCtx);
         });
     });
 });
