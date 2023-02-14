@@ -16,7 +16,7 @@ internal class GetStudentTotalBalanceQueryHandler : IRequestHandler<GetStudentTo
 
     public async Task<GetTotalBalanceDto> Handle(GetStudentTotalBalanceQuery request, CancellationToken cancellationToken)
     {
-        var payments = await _mediator.Send(new GetStudentSuccessFulPaymentsQuery(request.StudentNumber, request.StartDate, request.EndDate), cancellationToken);
+        var payments = await _mediator.Send(new GetStudentSuccessFulPaymentsQuery(request.StudentNumber), cancellationToken);
         var debts = await _mediator.Send(new GetStudentActiveDebtsQuery(request.StudentNumber, request.StartDate, request.EndDate), cancellationToken);
 
         var totalBalance = payments.Sum(p => p.Amount) - debts.Sum(d => d.Amount);

@@ -70,7 +70,7 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
 
     private async Task CheckStudentBalance(Student student, Term term)
     {
-        var balance = await _studentBalanceDataClient.GetStudentBalanceInfo(student.StudentNumber, null, term.StartDate);
+        var balance = await _studentBalanceDataClient.GetStudentBalanceInfo(student.StudentNumber, null, term.StartDate.AddDays(-1));
 
         if (balance.IsDebtor)
             throw new ClientException("Student has debt!");
