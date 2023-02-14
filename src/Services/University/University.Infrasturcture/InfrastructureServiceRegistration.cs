@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using University.Application.Contracts.Persistence;
 using University.Application.Contracts.SyncDataServices;
 using University.Infrasturcture.Persistence;
@@ -13,6 +14,7 @@ public static class InfrastructureServiceRegistration
 {
     public static IServiceCollection RegistrarInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddDbContext<UniDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("UniDb")));
 
         services.AddScoped<ICoursesRepository, CoursesRepository>();

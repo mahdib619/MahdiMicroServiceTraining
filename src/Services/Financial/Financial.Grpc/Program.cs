@@ -4,6 +4,8 @@ using Financial.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.RegistrarApplicationServices()
                 .RegistrarInfrastructureServices(builder.Configuration);
 
