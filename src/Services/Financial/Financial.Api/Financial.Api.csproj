@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\BuildingBlocks\AspNetHelpers\AspNetHelpers.csproj" />
+      <ProjectReference Include="..\..\..\BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj" />
       <ProjectReference Include="..\Financial.Application\Financial.Application.csproj" />
     <ProjectReference Include="..\Financial.Domain\Financial.Domain.csproj" />
     <ProjectReference Include="..\Financial.Infrastructure\Financial.Infrastructure.csproj" />

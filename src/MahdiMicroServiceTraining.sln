@@ -48,6 +48,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainHelpers", "BuildingBl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessHelper.EntityFramework", "BuildingBlocks\DataAccessHelper.EntityFramework\DataAccessHelper.EntityFramework.csproj", "{6E94A444-6259-43A9-9099-ABA20C9ABA3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{F660840C-A1DC-44B6-AC81-D76A6D114FEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E94A444-6259-43A9-9099-ABA20C9ABA3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F660840C-A1DC-44B6-AC81-D76A6D114FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F660840C-A1DC-44B6-AC81-D76A6D114FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F660840C-A1DC-44B6-AC81-D76A6D114FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F660840C-A1DC-44B6-AC81-D76A6D114FEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +147,7 @@ Global
 		{EB595EDC-EAF8-40DE-BFD9-83E36878BFD2} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 		{E4F8680E-A959-4E97-8B5F-107B75E83278} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 		{6E94A444-6259-43A9-9099-ABA20C9ABA3C} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
+		{F660840C-A1DC-44B6-AC81-D76A6D114FEF} = {8EFA7B79-D7FF-4C93-ABE5-CC2EAB72A739}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6869ED7F-5651-40AF-BF15-AC057B3E7313}
