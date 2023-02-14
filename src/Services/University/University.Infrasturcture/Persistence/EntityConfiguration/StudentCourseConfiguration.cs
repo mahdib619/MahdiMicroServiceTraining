@@ -8,8 +8,6 @@ internal class StudentCourseConfiguration : IEntityTypeConfiguration<StudentCour
 {
     public void Configure(EntityTypeBuilder<StudentCourse> builder)
     {
-        builder.HasAlternateKey(sc => new { sc.StudentId, sc.CourseId, sc.TermId });
-
         builder.HasOne(sc => sc.Student)
                .WithMany()
                .OnDelete(DeleteBehavior.NoAction);
