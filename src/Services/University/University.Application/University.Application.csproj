@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\DataAccessHelper.Abstraction\DataAccessHelper.Abstraction.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\GeneralHelpers\GeneralHelpers.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\ValidationHelpers\ValidationHelpers.csproj" />
@@ -17,6 +18,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="MassTransit" Version="8.0.12" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.12" />
     <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />

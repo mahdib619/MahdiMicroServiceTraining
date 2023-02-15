@@ -1,5 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Linq.Expressions;
+using AutoMapper;
+using EventBus.Messages.Events;
 using GeneralHelpers.Exceptions;
+using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using University.Application.Contracts.Persistence;
@@ -16,6 +19,7 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
     private readonly ICoursesRepository _coursesRepository;
     private readonly ITermsRepository _termsRepository;
     private readonly IStudentBalanceDataClient _studentBalanceDataClient;
+    private readonly IPublishEndpoint _publishEndpoint;
     private readonly IMapper _mapper;
     private readonly ILogger<CreateStudentCourseCommandHandler> _logger;
 
@@ -24,6 +28,7 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
         ICoursesRepository coursesRepository,
         ITermsRepository termsRepository,
         IStudentBalanceDataClient studentBalanceDataClient,
+        IPublishEndpoint publishEndpoint,
         IMapper mapper,
         ILogger<CreateStudentCourseCommandHandler> logger)
     {
@@ -32,6 +37,7 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
         _coursesRepository = coursesRepository;
         _termsRepository = termsRepository;
         _studentBalanceDataClient = studentBalanceDataClient;
+        _publishEndpoint = publishEndpoint;
         _mapper = mapper;
         _logger = logger;
     }
@@ -40,10 +46,15 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
     {
         await CheckCourseExistence(request);
         await CheckStudentCourseExistence(request);
-        await CheckStudentBalance(await GetStudent(request), await GetTerm(request));
+
+        var student = await GetStudent(request);
+
+        await CheckStudentBalance(student, await GetTerm(request));
 
         var studentCourse = _mapper.Map<StudentCourse>(request);
         var addedStudentCourse = await _repository.AddAsync(studentCourse);
+
+        await PublishPickedCourseEvent(request, student);
 
         var studentCourseRes = _mapper.Map<GetStudentCourseDto>(addedStudentCourse);
 
@@ -78,12 +89,12 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
 
     private async Task<Student> GetStudent(CreateStudentCourseCommand request)
     {
-        var student = await _studentsRepository.GetByIdAsync(request.StudentId);
+        var studentColl = await _studentsRepository.GetAsync(e => e.Id == request.StudentId, null, new List<Expression<Func<Student, object>>> { e => e.Major });
 
-        if (student is null)
+        if (studentColl.Count == 0)
             throw new ClientException("Invalid StudentId!");
 
-        return student;
+        return studentColl[0];
     }
 
     private async Task<Term> GetTerm(CreateStudentCourseCommand request)
@@ -94,5 +105,18 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
             throw new ClientException("Invalid TermId!");
 
         return term;
+    }
+
+    private async Task PublishPickedCourseEvent(CreateStudentCourseCommand request, Student student)
+    {
+        var message = new StudentPickedCourseEvent
+        {
+            StudentNumber = student.StudentNumber,
+            MajorCode = student.Major.Code,
+            PickedCourseId = request.CourseId,
+            IsFirstPickedCoursInTerm = await _repository.AnyAsync(e => e.StudentId == student.Id && e.TermId == request.TermId) == false
+        };
+
+        await _publishEndpoint.Publish(message);
     }
 }

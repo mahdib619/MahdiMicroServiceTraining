@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders()
                .AddSerilog();
 
-builder.Services.RegistrarApplicationServices()
+builder.Services.RegistrarApplicationServices(builder.Configuration)
                 .RegistrarInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();
