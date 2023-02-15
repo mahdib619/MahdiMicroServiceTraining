@@ -19,13 +19,28 @@ internal class DeleteStudentCourseCommandHandler : IRequestHandler<DeleteStudent
 
     public async Task<Unit> Handle(DeleteStudentCourseCommand request, CancellationToken cancellationToken)
     {
-        var deleted = await _repository.DeleteAsync(request.StudentCourseId);
+        var studentCourse = await _repository.GetByIdAsync(request.StudentCourseId);
 
-        if (!deleted)
-            throw new NotFoundException(nameof(StudentCourse), request.StudentCourseId);
+        CheckStudentCourseExistence(studentCourse, request);
+        CheckPassedState(studentCourse);
+
+        studentCourse.IsDeleted = true;
+        await _repository.UpdateAsync(studentCourse);
 
         _logger.LogInformation("StudentCourse {StudentCourseId} is deleted successfully.", request.StudentCourseId);
 
         return Unit.Value;
+    }
+
+    private static void CheckStudentCourseExistence(StudentCourse studentCourse, DeleteStudentCourseCommand request)
+    {
+        if (studentCourse is null)
+            throw new NotFoundException(nameof(StudentCourse), request.StudentCourseId);
+    }
+
+    private static void CheckPassedState(StudentCourse studentCourse)
+    {
+        if (studentCourse.IsPassed)
+            throw new ClientException("Cannot delete passed course!");
     }
 }
