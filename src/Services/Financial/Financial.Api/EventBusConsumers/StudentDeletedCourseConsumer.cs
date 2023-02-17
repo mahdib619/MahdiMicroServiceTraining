@@ -17,6 +17,6 @@ public class StudentDeletedCourseConsumer : IConsumer<StudentDeletedCourseEvent>
     public async Task Consume(ConsumeContext<StudentDeletedCourseEvent> context)
     {
         var message = context.Message;
-        await _mediator.Send(new DeleteLastStudentDebtCommand(message.StudentNumber, message.DeletedCourseId.ToString()));
+        await _mediator.Send(new DeleteLastStudentDebtCommand(message.StudentNumber, message.DeletedCourseCode));
     }
 }

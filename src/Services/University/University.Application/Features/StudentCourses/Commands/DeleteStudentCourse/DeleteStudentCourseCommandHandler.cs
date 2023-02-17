@@ -31,7 +31,7 @@ internal class DeleteStudentCourseCommandHandler : IRequestHandler<DeleteStudent
         studentCourse.IsDeleted = true;
         await _repository.UpdateAsync(studentCourse);
 
-        await PublishDeletedCourseEvent(request, studentCourse);
+        await PublishDeletedCourseEvent(studentCourse);
 
         _logger.LogInformation("StudentCourse {StudentCourseId} is deleted successfully.", request.StudentCourseId);
 
@@ -40,7 +40,7 @@ internal class DeleteStudentCourseCommandHandler : IRequestHandler<DeleteStudent
 
     private async Task<StudentCourse> GetStudentCourse(DeleteStudentCourseCommand request)
     {
-        var studentCourseCol = await _repository.GetAsync(e => e.Id == request.StudentCourseId, null, new List<Expression<Func<StudentCourse, object>>> { e => e.Student.Major });
+        var studentCourseCol = await _repository.GetAsync(e => e.Id == request.StudentCourseId, null, new List<Expression<Func<StudentCourse, object>>> { e => e.Student.Major, e => e.Course });
 
         if (studentCourseCol.Count == 0)
             throw new NotFoundException(nameof(StudentCourse), request.StudentCourseId);
@@ -54,13 +54,13 @@ internal class DeleteStudentCourseCommandHandler : IRequestHandler<DeleteStudent
             throw new ClientException("Cannot delete passed course!");
     }
 
-    private async Task PublishDeletedCourseEvent(DeleteStudentCourseCommand request, StudentCourse studentCourse)
+    private async Task PublishDeletedCourseEvent(StudentCourse studentCourse)
     {
         var message = new StudentDeletedCourseEvent
         {
             StudentNumber = studentCourse.Student.StudentNumber,
             MajorCode = studentCourse.Student.Major.Code,
-            DeletedCourseId = request.StudentCourseId
+            DeletedCourseCode = studentCourse.Course.Code
         };
 
         await _publishEndpoint.Publish(message);

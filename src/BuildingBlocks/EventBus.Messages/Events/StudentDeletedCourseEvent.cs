@@ -12,5 +12,5 @@ public class StudentDeletedCourseEvent : IntegrationBaseEvent
 
     public string StudentNumber { get; set; }
     public string MajorCode { get; set; }
-    public int DeletedCourseId { get; set; }
+    public string DeletedCourseCode { get; set; }
 }
