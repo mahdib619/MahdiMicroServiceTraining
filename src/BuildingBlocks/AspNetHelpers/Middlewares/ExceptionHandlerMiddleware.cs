@@ -1,12 +1,11 @@
 ﻿using System.Net.Mime;
-using System.Reflection;
 using System.Text.Json;
-using AspNetHelpers.Models;
 using GeneralHelpers.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
+using WebApplicationHelpers.Models;
 
-namespace AspNetHelpers.Middlewares;
+namespace WebApplicationHelpers.Middlewares;
 
 internal class ExceptionHandlerMiddleware
 {

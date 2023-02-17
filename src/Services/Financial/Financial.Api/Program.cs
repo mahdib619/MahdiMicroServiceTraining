@@ -1,9 +1,9 @@
-using AspNetHelpers.Extensions;
 using EventBus.Messages.Common;
 using Financial.Api.EventBusConsumers;
 using Financial.Application;
 using Financial.Infrastructure;
 using MassTransit;
+using WebApplicationHelpers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

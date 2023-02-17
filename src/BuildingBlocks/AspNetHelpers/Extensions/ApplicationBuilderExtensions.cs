@@ -1,7 +1,7 @@
-﻿using AspNetHelpers.Middlewares;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
+using WebApplicationHelpers.Middlewares;
 
-namespace AspNetHelpers.Extensions;
+namespace WebApplicationHelpers.Extensions;
 
 public static class ApplicationBuilderExtensions
 {

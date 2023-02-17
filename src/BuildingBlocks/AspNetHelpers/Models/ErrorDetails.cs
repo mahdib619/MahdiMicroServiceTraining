@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace AspNetHelpers.Models;
+namespace WebApplicationHelpers.Models;
 
 internal class ErrorDetails
 {

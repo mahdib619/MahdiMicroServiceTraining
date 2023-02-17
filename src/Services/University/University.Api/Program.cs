@@ -1,7 +1,7 @@
-using AspNetHelpers.Extensions;
 using Serilog;
 using University.Application;
 using University.Infrasturcture;
+using WebApplicationHelpers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

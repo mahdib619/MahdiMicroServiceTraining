@@ -40,7 +40,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralHelpers", "BuildingB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatRHelpers", "BuildingBlocks\MediatRHelpers\MediatRHelpers.csproj", "{7E3B569B-2208-42A9-A818-C4315D652E58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetHelpers", "BuildingBlocks\AspNetHelpers\AspNetHelpers.csproj", "{E826960C-C79E-4784-BC24-D46CEFF06273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationHelpers", "BuildingBlocks\AspNetHelpers\WebApplicationHelpers.csproj", "{E826960C-C79E-4784-BC24-D46CEFF06273}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessHelper.Abstraction", "BuildingBlocks\DataAccessHelper.Abstraction\DataAccessHelper.Abstraction.csproj", "{EB595EDC-EAF8-40DE-BFD9-83E36878BFD2}"
 EndProject
@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainHelpers", "BuildingBl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessHelper.EntityFramework", "BuildingBlocks\DataAccessHelper.EntityFramework\DataAccessHelper.EntityFramework.csproj", "{6E94A444-6259-43A9-9099-ABA20C9ABA3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{F660840C-A1DC-44B6-AC81-D76A6D114FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Messages", "BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{F660840C-A1DC-44B6-AC81-D76A6D114FEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
