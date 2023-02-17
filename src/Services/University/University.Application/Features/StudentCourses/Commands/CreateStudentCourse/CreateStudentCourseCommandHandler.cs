@@ -44,17 +44,18 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
 
     public async Task<GetStudentCourseDto> Handle(CreateStudentCourseCommand request, CancellationToken cancellationToken)
     {
-        await CheckCourseExistence(request);
         await CheckStudentCourseExistence(request);
 
+        var term = await GetTerm(request);
+        var course = await GetCourse(request);
         var student = await GetStudent(request);
 
-        await CheckStudentBalance(student, await GetTerm(request));
+        await CheckStudentBalance(student, term);
 
         var studentCourse = _mapper.Map<StudentCourse>(request);
         var addedStudentCourse = await _repository.AddAsync(studentCourse);
 
-        await PublishPickedCourseEvent(request, student);
+        await PublishPickedCourseEvent(request, student, course);
 
         var studentCourseRes = _mapper.Map<GetStudentCourseDto>(addedStudentCourse);
 
@@ -72,11 +73,14 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
             throw new ClientException("Student has already taken this course!");
     }
 
-    private async Task CheckCourseExistence(CreateStudentCourseCommand request)
+    private async Task<Course> GetCourse(CreateStudentCourseCommand request)
     {
-        var exists = await _coursesRepository.AnyAsync(e => e.Id == request.CourseId);
-        if (!exists)
+        var course = await _coursesRepository.GetByIdAsync(request.CourseId);
+
+        if (course is null)
             throw new ClientException("Invalid CourseId!");
+
+        return course;
     }
 
     private async Task CheckStudentBalance(Student student, Term term)
@@ -107,13 +111,13 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
         return term;
     }
 
-    private async Task PublishPickedCourseEvent(CreateStudentCourseCommand request, Student student)
+    private async Task PublishPickedCourseEvent(CreateStudentCourseCommand request, Student student, Course course)
     {
         var message = new StudentPickedCourseEvent
         {
             StudentNumber = student.StudentNumber,
             MajorCode = student.Major.Code,
-            PickedCourseId = request.CourseId,
+            PickedCourseCode = course.Code,
             IsFirstPickedCoursInTerm = await _repository.AnyAsync(e => e.StudentId == student.Id && e.TermId == request.TermId) == false
         };
 

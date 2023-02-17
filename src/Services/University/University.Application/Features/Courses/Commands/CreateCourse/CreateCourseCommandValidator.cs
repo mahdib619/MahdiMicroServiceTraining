@@ -9,6 +9,9 @@ internal class CreateCourseCommandValidator : AbstractValidator<CreateCourseComm
         RuleFor(cc => cc.Name).NotEmpty()
                               .MaximumLength(200);
 
+        RuleFor(c => c.Code).NotEmpty()
+                            .Length(10);
+
         RuleFor(cc => cc).Must(units => units.PracticalUnitsCount > 0 || units.TheoricalUnitsCount > 0)
                          .WithMessage("Course must have at least 1 unit.");
     }

@@ -12,6 +12,6 @@ public class StudentPickedCourseEvent : IntegrationBaseEvent
 
     public string StudentNumber { get; set; }
     public string MajorCode { get; set; }
-    public int PickedCourseId { get; set; }
+    public string PickedCourseCode { get; set; }
     public bool IsFirstPickedCoursInTerm { get; set; }
 }
