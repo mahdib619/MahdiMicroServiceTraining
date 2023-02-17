@@ -24,20 +24,20 @@ namespace Financial.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Financial.Domain.Entities.CourseFee", b =>
                 {
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
+                    b.Property<string>("CourseCode")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Fee")
                         .HasPrecision(18)
                         .HasColumnType("decimal(18,0)");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.HasKey("CourseId");
+                    b.HasKey("CourseCode");
 
                     b.ToTable("CourseFees");
                 });
@@ -91,7 +91,7 @@ namespace Financial.Infrastructure.Persistence.Migrations
                         .HasColumnType("decimal(18,0)");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));

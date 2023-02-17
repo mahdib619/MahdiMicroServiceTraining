@@ -6,7 +6,8 @@ internal class CreateCourseDebtCommandValidator : AbstractValidator<CreateCourse
 {
     public CreateCourseDebtCommandValidator()
     {
-        RuleFor(e => e.CourseId).GreaterThan(0);
+        RuleFor(e => e.CourseCode).NotEmpty()
+                                  .Length(10);
 
         RuleFor(s => s.StudentNumber).NotEmpty()
                                      .Length(15);

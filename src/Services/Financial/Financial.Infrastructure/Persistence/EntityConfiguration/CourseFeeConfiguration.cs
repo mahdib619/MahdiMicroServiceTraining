@@ -8,9 +8,7 @@ internal class CourseFeeConfiguration : IEntityTypeConfiguration<CourseFee>
 {
     public void Configure(EntityTypeBuilder<CourseFee> builder)
     {
-        builder.HasKey(e => e.CourseId);
-
-        builder.Property(e => e.CourseId).ValueGeneratedNever();
+        builder.HasKey(e => e.CourseCode);
 
         builder.Property(e => e.Id).UseIdentityColumn()
                                    .ValueGeneratedOnAddOrUpdate();

@@ -6,7 +6,9 @@ internal class AddOrUpdateCourseFeeCommandValidator : AbstractValidator<AddOrUpd
 {
     public AddOrUpdateCourseFeeCommandValidator()
     {
-        RuleFor(e => e.CourseId).GreaterThan(0);
+        RuleFor(e => e.CourseCode).NotEmpty()
+                                  .Length(10);
+
         RuleFor(e => e.Fee).GreaterThan(0);
     }
 }

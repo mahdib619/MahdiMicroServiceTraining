@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Financial.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(FinancialDbContext))]
-    [Migration("20230211061737_Initial")]
-    partial class Initial
+    [Migration("20230217133557_ReplaceCourseIdWithCourseCodeInCourseFees")]
+    partial class ReplaceCourseIdWithCourseCodeInCourseFees
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,15 @@ namespace Financial.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Financial.Domain.Entities.CourseFee", b =>
                 {
-                    b.Property<int>("CourseCode")
-                        .HasColumnType("int");
+                    b.Property<string>("CourseCode")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Fee")
                         .HasPrecision(18)
                         .HasColumnType("decimal(18,0)");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -94,7 +94,7 @@ namespace Financial.Infrastructure.Persistence.Migrations
                         .HasColumnType("decimal(18,0)");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));

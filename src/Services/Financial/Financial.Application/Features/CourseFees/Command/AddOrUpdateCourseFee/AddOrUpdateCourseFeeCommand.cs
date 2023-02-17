@@ -5,6 +5,6 @@ namespace Financial.Application.Features.CourseFees.Command.AddOrUpdateCourseFee
 
 public class AddOrUpdateCourseFeeCommand : IRequest<GetCourseFeeDto>
 {
-    public int CourseId { get; set; }
+    public string CourseCode { get; set; }
     public decimal Fee { get; set; }
 }

@@ -21,7 +21,7 @@ internal class AddOrUpdateCourseFeeCommandHandler : IRequestHandler<AddOrUpdateC
 
     public async Task<GetCourseFeeDto> Handle(AddOrUpdateCourseFeeCommand request, CancellationToken cancellationToken)
     {
-        var courseFee = (await _repository.GetAsync(e => e.CourseId == request.CourseId)).SingleOrDefault();
+        var courseFee = (await _repository.GetAsync(e => e.CourseCode == request.CourseCode)).SingleOrDefault();
 
         if (courseFee is null)
         {

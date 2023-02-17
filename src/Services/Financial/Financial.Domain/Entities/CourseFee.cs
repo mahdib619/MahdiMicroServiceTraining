@@ -4,6 +4,6 @@ namespace Financial.Domain.Entities;
 
 public class CourseFee : EntityBase
 {
-    public int CourseId { get; set; }
+    public string CourseCode { get; set; }
     public decimal Fee { get; set; }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Financial.Application.Contracts.Persistence;
 using Financial.Application.Dtos.Debt;
-using Financial.Application.Features.CourseFees.Queries.GetCourseFeeByCourseId;
+using Financial.Application.Features.CourseFees.Queries.GetCourseFeeByCourseCode;
 using Financial.Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -27,7 +27,7 @@ internal class CreateCourseDebtCommandHandler : IRequestHandler<CreateCourseDebt
     {
         var debt = _mapper.Map<Debt>(request);
 
-        var courseFee = await _mediator.Send(new GetCourseFeeByCourseIdQuery { CourseId = request.CourseId }, cancellationToken);
+        var courseFee = await _mediator.Send(new GetCourseFeeByCourseCodeQuery { CourseCode = request.CourseCode }, cancellationToken);
         debt.Amount = courseFee.Fee;
 
         var debtDb = await _repository.AddAsync(debt);

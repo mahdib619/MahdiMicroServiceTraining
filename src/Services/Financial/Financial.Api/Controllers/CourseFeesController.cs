@@ -1,6 +1,6 @@
 ﻿using Financial.Application.Dtos.CourseFee;
 using Financial.Application.Features.CourseFees.Command.AddOrUpdateCourseFee;
-using Financial.Application.Features.CourseFees.Queries.GetCourseFeeByCourseId;
+using Financial.Application.Features.CourseFees.Queries.GetCourseFeeByCourseCode;
 using Financial.Application.Features.CourseFees.Queries.GetCourseFeesList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -25,10 +25,10 @@ public class CourseFeesController : ControllerBase
         return Ok(courseFees);
     }
 
-    [HttpGet("{courseId:int}", Name = nameof(GetCourseFee))]
-    public async Task<ActionResult<GetCourseFeeDto>> GetCourseFee(int courseId)
+    [HttpGet("{courseCode}", Name = nameof(GetCourseFee))]
+    public async Task<ActionResult<GetCourseFeeDto>> GetCourseFee(string courseCode)
     {
-        var request = new GetCourseFeeByCourseIdQuery { CourseId = courseId };
+        var request = new GetCourseFeeByCourseCodeQuery { CourseCode = courseCode };
         var result = await _mediator.Send(request);
         return Ok(result);
     }
@@ -37,6 +37,6 @@ public class CourseFeesController : ControllerBase
     public async Task<ActionResult<GetCourseFeeDto>> AddOrUpdateCourseFee(AddOrUpdateCourseFeeCommand request)
     {
         var result = await _mediator.Send(request);
-        return CreatedAtAction(nameof(GetCourseFee), new { result.CourseId }, result);
+        return CreatedAtAction(nameof(GetCourseFee), new { result.CourseCode }, result);
     }
 }

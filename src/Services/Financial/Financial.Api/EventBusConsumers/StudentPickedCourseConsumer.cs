@@ -22,7 +22,7 @@ public class StudentPickedCourseConsumer : IConsumer<StudentPickedCourseEvent>
         await _mediator.Send(new CreateCourseDebtCommand
         {
             StudentNumber = message.StudentNumber,
-            CourseId = message.PickedCourseId,
+            CourseCode = message.PickedCourseCode,
             DateTime = message.CreationDate,
             Description = null
         });
