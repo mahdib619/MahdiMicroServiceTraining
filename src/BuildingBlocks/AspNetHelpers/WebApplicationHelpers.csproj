@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataAccessHelper.EntityFramework\DataAccessHelper.EntityFramework.csproj" />
     <ProjectReference Include="..\GeneralHelpers\GeneralHelpers.csproj" />
   </ItemGroup>
 

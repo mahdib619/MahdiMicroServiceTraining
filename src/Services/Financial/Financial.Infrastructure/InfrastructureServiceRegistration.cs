@@ -1,4 +1,5 @@
-﻿using Financial.Application.Contracts.Persistence;
+﻿using DataAccessHelper.EntityFramework;
+using Financial.Application.Contracts.Persistence;
 using Financial.Infrastructure.Persistence;
 using Financial.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,9 @@ public static class InfrastructureServiceRegistration
         services.AddScoped<IDebtsRepository, DebtsRepository>();
         services.AddScoped<IMajorFeesRepository, MajorFeesRepository>();
         services.AddScoped<IPaymentsRepository, PaymentsRepository>();
+
+        var dbMigrator = new DbContextMigrator<FinancialDbContext>(services.BuildServiceProvider(), FinancialDbSeeder.SeedAsync);
+        services.AddSingleton(dbMigrator);
 
         return services;
     }

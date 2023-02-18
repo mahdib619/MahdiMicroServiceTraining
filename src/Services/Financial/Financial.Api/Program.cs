@@ -49,4 +49,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.StartDbMigrators();
+
 app.Run();
