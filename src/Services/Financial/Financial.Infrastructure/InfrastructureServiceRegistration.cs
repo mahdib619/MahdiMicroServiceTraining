@@ -5,6 +5,7 @@ using Financial.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Financial.Infrastructure;
 
@@ -20,7 +21,7 @@ public static class InfrastructureServiceRegistration
         services.AddScoped<IPaymentsRepository, PaymentsRepository>();
 
         var dbMigrator = new DbContextMigrator<FinancialDbContext>(services.BuildServiceProvider(), FinancialDbSeeder.SeedAsync);
-        services.AddSingleton(dbMigrator);
+        services.TryAddEnumerable(new ServiceDescriptor(typeof(IDbMigrator), dbMigrator));
 
         return services;
     }

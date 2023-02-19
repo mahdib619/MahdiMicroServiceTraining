@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DataAccessHelper.EntityFramework;
 
-public class DbContextMigrator<T> where T : DbContext
+public class DbContextMigrator<T> : IDbMigrator where T : DbContext
 {
     private const int MAX_TRY_COUNT = 30;
     private readonly IServiceProvider _serviceProvider;

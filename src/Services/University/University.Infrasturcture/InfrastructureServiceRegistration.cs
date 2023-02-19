@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using DataAccessHelper.EntityFramework;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using University.Application.Contracts.Persistence;
 using University.Application.Contracts.SyncDataServices;
 using University.Infrasturcture.Persistence;
@@ -27,7 +28,7 @@ public static class InfrastructureServiceRegistration
         services.AddScoped<IStudentBalanceDataClient, GrpcStudentBalanceDataClient>();
 
         var dbMigrator = new DbContextMigrator<UniDbContext>(services.BuildServiceProvider(), UniDbSeeder.SeedAsync);
-        services.AddSingleton(dbMigrator);
+        services.TryAddEnumerable(new ServiceDescriptor(typeof(IDbMigrator), dbMigrator));
 
         return services;
     }
