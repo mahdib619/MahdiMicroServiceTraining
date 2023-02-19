@@ -55,7 +55,7 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
         var studentCourse = _mapper.Map<StudentCourse>(request);
         var addedStudentCourse = await _repository.AddAsync(studentCourse);
 
-        await PublishPickedCourseEvent(request, student, course);
+        await PublishPickedCourseEvent(request, student, course, addedStudentCourse.Id);
 
         var studentCourseRes = _mapper.Map<GetStudentCourseDto>(addedStudentCourse);
 
@@ -111,14 +111,14 @@ internal class CreateStudentCourseCommandHandler : IRequestHandler<CreateStudent
         return term;
     }
 
-    private async Task PublishPickedCourseEvent(CreateStudentCourseCommand request, Student student, Course course)
+    private async Task PublishPickedCourseEvent(CreateStudentCourseCommand request, Student student, Course course, int newStudentCourseId)
     {
         var message = new StudentPickedCourseEvent
         {
             StudentNumber = student.StudentNumber,
             MajorCode = student.Major.Code,
             PickedCourseCode = course.Code,
-            IsFirstPickedCoursInTerm = await _repository.AnyAsync(e => e.StudentId == student.Id && e.TermId == request.TermId) == false
+            IsFirstPickedCoursInTerm = await _repository.AnyAsync(e => e.Id != newStudentCourseId && e.StudentId == student.Id && e.TermId == request.TermId) == false
         };
 
         await _publishEndpoint.Publish(message);
