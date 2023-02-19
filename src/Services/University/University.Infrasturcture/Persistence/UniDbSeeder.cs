@@ -34,7 +34,7 @@ internal static class UniDbSeeder
         if (await context.Terms.AnyAsync())
             return;
 
-        await context.Terms.AddRangeAsync(
+        context.Terms.AttachRange(
            new Term { Name = "4001", StartDate = new(2022, 5, 1), EndDate = new(2022, 12, 1) },
            new Term { Name = "4002", StartDate = new(2023, 1, 1), EndDate = new(2023, 4, 1) },
            new Term { Name = "4011", StartDate = new(2023, 5, 1), EndDate = new(2023, 12, 1) },
@@ -55,9 +55,12 @@ internal static class UniDbSeeder
         if (await context.Students.AnyAsync())
             return;
 
+        var terms = context.ChangeTracker.Entries<Term>().Select(e => e.Entity).ToArray();
+        var majors = context.ChangeTracker.Entries<Major>().Select(e => e.Entity).ToArray();
+
         await context.Students.AddRangeAsync(
-            new Student { FirstName = "مهدی", LastName = "بغرائی", StudentNumber = "123456789101112", Major = await context.Majors.FirstAsync(), SignUpTerm = await context.Terms.FirstAsync() },
-            new Student { FirstName = "اکبر", LastName = "رضایی", StudentNumber = "123456789101113", Major = await context.Majors.FirstAsync(), SignUpTerm = context.Terms.ElementAt(2) }
+            new Student { FirstName = "مهدی", LastName = "بغرائی", StudentNumber = "123456789101112", Major = majors[0], SignUpTerm = terms[0] },
+            new Student { FirstName = "اکبر", LastName = "رضایی", StudentNumber = "123456789101113", Major = majors[0], SignUpTerm = terms[1] }
         );
     }
     private static async Task SeedStudentCourses(UniDbContext context)
@@ -65,9 +68,9 @@ internal static class UniDbSeeder
         if (await context.StudentCourses.AnyAsync())
             return;
 
-        var students = await context.Students.ToArrayAsync();
-        var courses = await context.Courses.ToArrayAsync();
-        var terms = await context.Terms.Take(2).ToListAsync();
+        var students = context.ChangeTracker.Entries<Student>().Select(e => e.Entity).ToArray();
+        var courses = context.ChangeTracker.Entries<Course>().Select(e => e.Entity).ToArray();
+        var terms = context.ChangeTracker.Entries<Term>().Select(e => e.Entity).ToArray();
 
         await context.StudentCourses.AddRangeAsync(
             new StudentCourse { Student = students[0], Course = courses[0], Term = terms[0] },
