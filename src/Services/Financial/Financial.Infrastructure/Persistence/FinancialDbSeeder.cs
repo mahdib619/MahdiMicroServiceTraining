@@ -22,12 +22,12 @@ internal static class FinancialDbSeeder
             return;
 
         await dbContext.Payments.AddRangeAsync(
-            new Payment { StudentNumber = "123456789101112", Amount = 20000000, PaymentTime = new(2022, 5, 1) },
-            new Payment { StudentNumber = "123456789101112", Amount = 20000000, PaymentTime = new(2022, 5, 1) },
-            new Payment { StudentNumber = "123456789101113", Amount = 20000000, PaymentTime = new(2023, 1, 1) },
-            new Payment { StudentNumber = "123456789101112", Amount = 5000000, PaymentTime = new(2022, 5, 1) },
-            new Payment { StudentNumber = "123456789101112", Amount = 14000000, PaymentTime = new(2022, 5, 1) },
-            new Payment { StudentNumber = "123456789101113", Amount = 14000000, PaymentTime = new(2022, 5, 1) }
+            new Payment { StudentNumber = "123456789101112", Amount = 20000000, PaymentTime = new(2022, 5, 1), IsSuccess = true },
+            new Payment { StudentNumber = "123456789101112", Amount = 20000000, PaymentTime = new(2022, 5, 1), IsSuccess = true },
+            new Payment { StudentNumber = "123456789101113", Amount = 20000000, PaymentTime = new(2023, 1, 1), IsSuccess = true },
+            new Payment { StudentNumber = "123456789101112", Amount = 5000000, PaymentTime = new(2022, 5, 1), IsSuccess = true },
+            new Payment { StudentNumber = "123456789101112", Amount = 14000000, PaymentTime = new(2022, 5, 1), IsSuccess = true },
+            new Payment { StudentNumber = "123456789101113", Amount = 14000000, PaymentTime = new(2022, 5, 1), IsSuccess = true }
         );
     }
 
@@ -41,7 +41,7 @@ internal static class FinancialDbSeeder
             new Debt { StudentNumber = "123456789101112", Amount = 20000000, DebtSourseType = DebtSourseType.MajorTermFee, SourceId = "1234567", DateTime = new(2022, 5, 1) },
             new Debt { StudentNumber = "123456789101113", Amount = 20000000, DebtSourseType = DebtSourseType.MajorTermFee, SourceId = "1234567", DateTime = new(2023, 1, 1) },
             new Debt { StudentNumber = "123456789101112", Amount = 5000000, DebtSourseType = DebtSourseType.CourseFee, SourceId = "12345-1234", DateTime = new(2022, 5, 1) },
-            new Debt { StudentNumber = "123456789101112", Amount = 3500000, DebtSourseType = DebtSourseType.CourseFee, SourceId = "12345-1236", DateTime = new(2022, 5, 1) },
+            new Debt { StudentNumber = "123456789101112", Amount = 3500000, DebtSourseType = DebtSourseType.CourseFee, SourceId = "12345-1236", DateTime = new(2022, 5, 1), IsDeleted = true },
             new Debt { StudentNumber = "123456789101112", Amount = 3500000, DebtSourseType = DebtSourseType.CourseFee, SourceId = "12345-1236", DateTime = new(2022, 5, 1) },
             new Debt { StudentNumber = "123456789101112", Amount = 7000000, DebtSourseType = DebtSourseType.CourseFee, SourceId = "12345-1235", DateTime = new(2022, 5, 1) },
             new Debt { StudentNumber = "123456789101113", Amount = 7000000, DebtSourseType = DebtSourseType.CourseFee, SourceId = "12345-1235", DateTime = new(2022, 5, 1) },
