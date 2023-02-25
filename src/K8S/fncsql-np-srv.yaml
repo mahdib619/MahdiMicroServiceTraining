@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fncsql-np-srv
+spec:
+  type: NodePort
+  selector:
+    app: financialsqldb
+  ports:
+    - port: 1433
+      targetPort: 1433
+      nodePort: 30651

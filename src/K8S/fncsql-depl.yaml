@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fncsql-depl
+spec:
+  selector:
+    matchLabels:
+      app: financialsqldb
+  template:
+    metadata:
+      labels:
+        app: financialsqldb
+    spec:
+      containers:
+        - name: financialsqldb
+          image: mcr.microsoft.com/mssql/server:2017-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: MSSQL_PID
+              value: "Express"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-financial
+                  key: SA_PASSWORD
+          volumeMounts:
+            - mountPath: /var/opt/mssql/data
+              name: fncsqldb
+      volumes:
+        - name: fncsqldb
+          persistentVolumeClaim:
+            claimName: fncsql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: financialsqldb
+spec:
+  type: ClusterIP
+  selector:
+   app: financialsqldb
+  ports:
+   - protocol: TCP
+     port: 1433
+     targetPort: 1433
