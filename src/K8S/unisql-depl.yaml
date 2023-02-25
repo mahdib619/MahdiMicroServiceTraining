@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unisql-depl
+spec:
+  selector:
+    matchLabels:
+      app: universitysqldb
+  template:
+    metadata:
+      labels:
+        app: universitysqldb
+    spec:
+      containers:
+        - name: universitysqldb
+          image: mcr.microsoft.com/mssql/server:2017-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: MSSQL_PID
+              value: "Express"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-university
+                  key: SA_PASSWORD
+          volumeMounts:
+            - mountPath: /var/opt/mssql/data
+              name: unisqldb
+      volumes:
+        - name: unisqldb
+          persistentVolumeClaim:
+            claimName: unisql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: universitysqldb
+spec:
+  type: ClusterIP
+  selector:
+   app: universitysqldb
+  ports:
+   - protocol: TCP
+     port: 1433
+     targetPort: 1433
