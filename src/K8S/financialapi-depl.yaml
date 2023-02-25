@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: financialapi-depl
+spec:
+  selector:
+    matchLabels:
+      app: financialapi
+  template:
+    metadata:
+      labels:
+        app: financialapi
+    spec:
+      containers:
+        - name: financialapi
+          image: mahdib619/financialapi:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: financialapi-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: financialapi
+  ports:
+    - name: financialapi-clusterip
+      protocol: TCP
+      port: 80
+      targetPort: 80
