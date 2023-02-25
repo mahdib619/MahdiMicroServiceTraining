@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: universityapi-depl
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+     app: universityapi
+  template:
+    metadata:
+      labels:
+        app: universityapi
+    spec:
+      containers:
+        - name: universityapi
+          image: mahdib619/universityapi:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: universityapi-clusturip-srv
+spec:
+  type: ClusterIP
+  selector:
+   app: universityapi
+  ports:
+   - name: universityapi-clusturip
+     protocol: TCP
+     port: 80
+     targetPort: 80
