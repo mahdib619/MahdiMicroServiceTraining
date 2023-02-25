@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: financialgrpc-depl
+spec:
+    selector:
+      matchLabels:
+        app: financialgrpc
+    template:
+      metadata:
+        labels:
+          app: financialgrpc
+      spec:
+        containers:
+          - name: financialgrpc
+            image: mahdib619/financialgrpc:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: financialgrpc
+spec:
+  type: ClusterIP
+  selector:
+   app: financialgrpc
+  ports:
+   - protocol: TCP
+     port: 80
+     targetPort: 80
