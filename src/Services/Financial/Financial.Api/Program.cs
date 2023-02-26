@@ -3,9 +3,13 @@ using Financial.Api.EventBusConsumers;
 using Financial.Application;
 using Financial.Infrastructure;
 using MassTransit;
+using Serilog;
 using WebApplicationHelpers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders()
+               .AddSerilog();
 
 builder.Services.RegistrarApplicationServices()
                 .RegistrarInfrastructureServices(builder.Configuration);
@@ -37,6 +41,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(app.Configuration)
+    .CreateLogger();
 
 app.UseSwagger();
 app.UseSwaggerUI();

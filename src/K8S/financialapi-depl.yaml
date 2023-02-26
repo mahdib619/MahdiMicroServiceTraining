@@ -14,6 +14,27 @@ spec:
       containers:
         - name: financialapi
           image: mahdib619/financialapi:latest
+        - name: financialapi-seq
+          image: datalust/seq:2023.1
+          ports:
+            - containerPort: 7120
+          env:
+            - name: SEQ_API_LISTENURIS
+              value: http://0.0.0.0:7120
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SEQ_FIRSTRUN_ADMINPASSWORDHASH
+              valueFrom:
+                secretKeyRef:
+                  name: seq-financial
+                  key: ADMIN_PASS
+          volumeMounts:
+            - mountPath: /data
+              name: fncseqdata
+      volumes:
+        - name: fncseqdata
+          persistentVolumeClaim:
+            claimName: fncseq-pvc
 ---
 apiVersion: v1
 kind: Service
