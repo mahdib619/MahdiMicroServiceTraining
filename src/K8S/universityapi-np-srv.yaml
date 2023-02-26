@@ -12,3 +12,8 @@ spec:
       port: 80
       targetPort: 80
       nodePort: 30600
+    - name: universityapi-log-port
+      protocol: TCP
+      port: 7120
+      targetPort: 7120
+      nodePort: 30610

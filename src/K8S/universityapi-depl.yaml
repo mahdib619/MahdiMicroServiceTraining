@@ -15,6 +15,27 @@ spec:
       containers:
         - name: universityapi
           image: mahdib619/universityapi:latest
+        - name: universityapi-seq
+          image: datalust/seq:2023.1
+          ports:
+            - containerPort: 7120
+          env:
+            - name: SEQ_API_LISTENURIS
+              value: http://0.0.0.0:7120
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SEQ_FIRSTRUN_ADMINPASSWORDHASH
+              valueFrom:
+                secretKeyRef:
+                  name: seq-university
+                  key: ADMIN_PASS
+          volumeMounts:
+            - mountPath: /data
+              name: uniseqdata
+      volumes:
+        - name: uniseqdata
+          persistentVolumeClaim:
+            claimName: uniapiseq-pvc
 ---
 apiVersion: v1
 kind: Service
